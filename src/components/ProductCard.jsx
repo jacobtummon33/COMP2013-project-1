@@ -4,36 +4,37 @@ import QuantityCounter from "./QuantityCounter";
 //Individual product boxes
 
 export default function ProductCard({
-  id,
+  _id,
   image,
   productName,
   brand,
   price,
-  quantity, //Current amount selected for the product
+  quantity,
   handleQuantityChange,
   handleAddToCart,
+  handleFormEdit,
+  handleDeleteProduct,
 }) {
   return (
     <div className="ProductCard">
       <p className="ProductName">{productName}</p>
-      <img src={image} alt={productName} className="ProductImage"></img>
-      <p className="ProductBrand">{brand} </p>
-      <p className="ProductPrice"> {price} </p>
+      <img src={image} alt={productName} className="ProductImage" />
+      <p className="ProductBrand">{brand}</p>
+      <p className="ProductPrice">{price}</p>
 
       <QuantityCounter
-        productQuantity={{ id, quantity }}
+        productQuantity={{ id: _id, quantity }}
         handleAddQuantity={(id) => handleQuantityChange(id, 1)}
         handleRemoveQuantity={(id) => handleQuantityChange(id, -1)}
       />
 
       <p className="SelectedAmount">Selected: {quantity}</p>
 
-      <button
-        className="AddToCart"
-        onClick={() => handleAddToCart(id, quantity)}
-      >
+      <button className="AddToCart" onClick={() => handleAddToCart(_id)}>
         Add to cart
       </button>
+      <button onClick={() => handleFormEdit(_id)}>Edit?</button>
+      <button onClick={() => handleDeleteProduct(_id)}>Delete?</button>
     </div>
   );
 }

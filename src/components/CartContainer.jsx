@@ -34,7 +34,7 @@ export default function CartContainer({
 
         {cart.map((item) => (
           <CartCard
-            key={item.id}
+            key={item._id}
             {...item}
             handleCartQuantityChange={handleCartQuantityChange}
             handleRemoveFromCart={handleRemoveFromCart}

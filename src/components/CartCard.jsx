@@ -5,7 +5,7 @@ import QuantityCounter from "./QuantityCounter";
 //Individual boxes for cart
 
 export default function CartCard({
-  id,
+  _id,
   image,
   productName,
   price,
@@ -22,7 +22,7 @@ export default function CartCard({
       </div>
 
       <QuantityCounter
-        productQuantity={{ id, quantity }}
+        productQuantity={{ id: _id, quantity }}
         handleAddQuantity={(id) => handleCartQuantityChange(id, 1)}
         handleRemoveQuantity={(id) => handleCartQuantityChange(id, -1)}
       />
@@ -34,7 +34,7 @@ export default function CartCard({
         </p>
         <button
           className="RemoveFromCart"
-          onClick={() => handleRemoveFromCart(id)}
+          onClick={() => handleRemoveFromCart(_id)}
         >
           Remove From Cart
         </button>
